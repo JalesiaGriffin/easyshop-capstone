@@ -7,6 +7,7 @@ import org.yearup.models.Category;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,22 +21,18 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public List<Category> getAllCategories()
     {
-        List<Category> categories = null;
-        String query = "SELECT * FROM easyshop.categories;";
+        List<Category> categories = new ArrayList<>();
+        String query = "SELECT * FROM categories";
 
         try(Connection connection = getConnection();
             PreparedStatement selectStatement = connection.prepareStatement(query);
             ResultSet resultSet = selectStatement.executeQuery()){
-            do {
-              int categoryID = resultSet.getInt("category_id");
-              String name = resultSet.getString("name");
-              String description = resultSet.getString("description");
-              categories.add(new Category(categoryID, name, description));
-            } while (resultSet.next());
+            while (resultSet.next()) {
+                categories.add(mapRow(resultSet));
+            }
         } catch (SQLException e){
             e.printStackTrace();
         }
-
         return categories;
     }
 
@@ -43,31 +40,28 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public Category getById(int categoryId)
     {
         Category category = new Category();
-        String sql = "SELECT * FROM easyshop.categories WHERE category_id = ?";
+        String sql = "SELECT * FROM categories WHERE category_id = ?";
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
              statement.setInt(1, categoryId);
 
             try (ResultSet resultSet = statement.executeQuery()) {
+
                 if (resultSet.next()) {
-                    category.setCategoryId(resultSet.getInt("category_id"));
-                    category.setName(resultSet.getString("name"));
-                    category.setDescription(resultSet.getString("description"));
-                    return category;
+                    return mapRow(resultSet);
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-
-        return category;
+        return null;
     }
 
     @Override
     public Category create(Category category)
     {
-        String sql = "INSERT INTO easyshop.categories (name, description) VALUES (?, ?)";
+        String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -92,13 +86,13 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return category;
     }
 
     @Override
     public void update(int categoryId, Category category)
     {
-        String sql = "UPDATE easyshop.categories SET name = ? WHERE category_id = ?";
+        String sql = "UPDATE categories SET name = ? WHERE category_id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -115,7 +109,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void delete(int categoryId)
     {
-        String sql = "DELETE FROM Categories WHERE CategoryID = ?";
+        String sql = "DELETE FROM categories WHERE category_id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -124,7 +118,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -143,5 +137,4 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
         return category;
     }
-
 }
