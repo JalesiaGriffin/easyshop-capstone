@@ -10,9 +10,7 @@ Welcome to Easy Shop, your go-to destination for a seamless online shopping expe
 
 - [Demo](#demo)
 
-- [Controller Tests](#controller-tests)
-
-- [Contribution](#contribution)
+- [Endpoint Tests](#endpoint-tests)
 
 ## Setup
 *Clone the Repository
@@ -23,31 +21,32 @@ Welcome to Easy Shop, your go-to destination for a seamless online shopping expe
 - Create a MySQL database named `easyshop` by running the `create_database.sql` script in the `database` folder.
 - Update `application.properties` with your database credentials.
 - Run the Application
-- Access the Application
-  - Open your browser and visit http://localhost:8080
 
 ### Technologies Used
-#### **Spring Boot**:
+#### ![SpringBoot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)
 Backend framework for building APIs.
-#### **MySQL**:
+#### ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 Database for efficient data storage.
 
 ## Features
 
-### User Registration and Login
-- Effortlessly create and manage your account to enjoy personalized services and a secure shopping journey.
+- User Registration and Login
 
-### Product Display by Category
-- Explore a wide range of products conveniently organized by categories. Find what you need with ease.
+- Product Display by Category, Price, and Color
 
-### Search and Filter
-- Locate specific products swiftly using our search functionality or refine your choices with our efficient filtering options.
+- Search and Filter
+
+### Bugs
+#### Bug 1
+##### Included both min and max price values in the query to return accurate results
+![bug1](imgs/bug1.PNG)
+
+#### Bug 2
+##### Fixed product duplication by using the update method in the ProductDao instead of the create method
+![bug2](imgs/bug2.PNG)
 
 ## Demo
 ![demo](imgs/demo.gif)
 
-## Controller Tests
-![](imgs/controller-tests.PNG)
-
-## Contribution
-We welcome contributions to enhance Easy Shop. Feel free to fork the repository, make improvements, and submit a pull request.
+## Endpoint Tests
+![Postman Tests](imgs/controller-tests.PNG)
