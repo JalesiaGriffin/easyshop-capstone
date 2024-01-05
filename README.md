@@ -13,7 +13,7 @@ Welcome to Easy Shop, your go-to destination for a seamless online shopping expe
 - [Endpoint Tests](#endpoint-tests)
 
 ## Setup
-*Clone the Repository
+**Clone the Repository**
    ```
    git clone https://github.com/JalesiaGriffin/easyshop-capstone.git
    ```
