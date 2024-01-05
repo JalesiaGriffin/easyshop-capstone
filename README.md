@@ -10,6 +10,8 @@ Welcome to Easy Shop, your go-to destination for a seamless online shopping expe
 
 - [Demo](#demo)
 
+- [Controller Tests](#controller-tests)
+
 - [Contribution](#contribution)
 
 ## Setup
@@ -33,17 +35,19 @@ Database for efficient data storage.
 ## Features
 
 ### User Registration and Login
-Effortlessly create and manage your account to enjoy personalized services and a secure shopping journey.
+- Effortlessly create and manage your account to enjoy personalized services and a secure shopping journey.
 
 ### Product Display by Category
-Explore a wide range of products conveniently organized by categories. Find what you need with ease.
+- Explore a wide range of products conveniently organized by categories. Find what you need with ease.
 
 ### Search and Filter
-Locate specific products swiftly using our search functionality or refine your choices with our efficient filtering options.
+- Locate specific products swiftly using our search functionality or refine your choices with our efficient filtering options.
 
 ## Demo
 ![demo](imgs/demo.gif)
 
+## Controller Tests
+![](imgs/controller-tests.PNG)
+
 ## Contribution
 We welcome contributions to enhance Easy Shop. Feel free to fork the repository, make improvements, and submit a pull request.
-Happy Shopping! :shopping_bags:****
