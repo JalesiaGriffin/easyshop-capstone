@@ -17,12 +17,12 @@ Locate specific products swiftly using our search functionality or refine your c
    ```
    git clone https://github.com/JalesiaGriffin/easyshop-capstone.git
    ```
-*Set Up MySQL Database
-Create a MySQL database named `easyshop` by running the `create_database.sql` script in the `database` folder.
-Update `application.properties` with your database credentials.
-*Run the Application
-*Access the Application
-Open your browser and visit http://localhost:8080
+- Set Up MySQL Database
+- Create a MySQL database named `easyshop` by running the `create_database.sql` script in the `database` folder.
+- Update `application.properties` with your database credentials.
+- Run the Application
+- Access the Application
+  - Open your browser and visit http://localhost:8080
 
 ## Technologies Used
 **Spring Boot**: Backend framework for building APIs.
